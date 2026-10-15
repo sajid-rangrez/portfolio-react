@@ -1,3 +1,4 @@
+
 import type { Project } from "../data/projects";
 
 interface ProjectCardProps {
@@ -25,6 +26,32 @@ function ProjectCard({ project }: ProjectCardProps) {
           </span>
         ))}
       </div>
+
+      {(project.githubUrl || project.liveDemoUrl) && (
+        <div className="mt-6 flex flex-wrap gap-3">
+          {project.githubUrl && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-lg border border-slate-700 px-4 py-2 text-sm font-medium text-white transition hover:border-cyan-400"
+            >
+              GitHub
+            </a>
+          )}
+
+          {project.liveDemoUrl && (
+            <a
+              href={project.liveDemoUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-lg bg-cyan-400 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300"
+            >
+              Live Demo
+            </a>
+          )}
+        </div>
+      )}
     </article>
   );
 }
