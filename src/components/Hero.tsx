@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 function Hero() {
   return (
@@ -26,12 +27,11 @@ function Hero() {
         </p>
 
         <div className="mt-8 flex flex-wrap gap-4">
-          <a
-            href="#projects"
+          <Link to="/projects"
             className="rounded-lg bg-cyan-400 px-6 py-3 font-semibold text-slate-950 transition hover:bg-cyan-300"
           >
             Explore my work
-          </a>
+          </Link>
 
           <a
             href="mailto:sajidhussain3327@gmail.com"

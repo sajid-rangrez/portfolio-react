@@ -1,5 +1,6 @@
 
 import type { Project } from "../data/projects";
+import { Link } from "react-router-dom";
 
 interface ProjectCardProps {
   project: Project;
@@ -52,6 +53,12 @@ function ProjectCard({ project }: ProjectCardProps) {
           )}
         </div>
       )}
+      <Link
+        to={`/projects/${project.id}`}
+        className="mt-4 inline-block text-cyan-400 hover:underline"
+      >
+        View project details →
+      </Link>
     </article>
   );
 }

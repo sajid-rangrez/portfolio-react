@@ -1,19 +1,18 @@
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { projects } from "../data/projects";
 import ProjectCard from "./ProjectCard";
 
 function Projects() {
-  const [selectedTechnology, setSelectedTechnology] =
-    useState("All");
+  useEffect(() => {
+    document.title = "Sajid Hussain | Developer Portfolio";
+  }, []);
+  const [selectedTechnology, setSelectedTechnology] = useState("All");
 
   const [searchTerm, setSearchTerm] = useState("");
 
   const technologies = [
     "All",
-    ...new Set(
-      projects.flatMap((project) => project.technologies)
-    ),
+    ...new Set(projects.flatMap((project) => project.technologies)),
   ];
 
   const normalizedSearch = searchTerm.trim().toLowerCase();
@@ -31,13 +30,8 @@ function Projects() {
   });
 
   return (
-    <section
-      id="projects"
-      className="mx-auto max-w-6xl px-6 py-16"
-    >
-      <p className="font-medium text-cyan-400">
-        SELECTED WORK
-      </p>
+    <section id="projects" className="mx-auto max-w-6xl px-6 py-16">
+      <p className="font-medium text-cyan-400">SELECTED WORK</p>
 
       <h2 className="mt-3 text-3xl font-bold text-white">
         Projects I've built
@@ -107,10 +101,7 @@ function Projects() {
       {filteredProjects.length > 0 ? (
         <div className="mt-5 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {filteredProjects.map((project) => (
-            <ProjectCard
-              key={project.id}
-              project={project}
-            />
+            <ProjectCard key={project.id} project={project} />
           ))}
         </div>
       ) : (
